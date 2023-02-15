@@ -61,18 +61,18 @@
 <body>
   <header class="header">
     <nav class="header__box">
-      <ul>
+      <ul class="header__list">
         <li class="header__item">
-          <a href="testing.cfm">ввести ошибку</a>
+          <a class="header__link header__link_active" href="testing.cfm">ввести ошибку</a>
         </li>
         <li class="header__item">
-          <a href="errorList.cfm">список ошибок</a>
+          <a class="header__link" href="errorList.cfm">список ошибок</a>
         </li>
         <li class="header__item">
-          <a href="userList.cfm">список пользоваетелей</a>
+          <a  class="header__link"href="userList.cfm">список пользоваетелей</a>
         </li>
         <li class="header__item">
-          <a href="">выход из системы</a>
+          <a class="header__link" href="login.cfm">выход из системы</a>
         </li>
       </ul>
     </nav>

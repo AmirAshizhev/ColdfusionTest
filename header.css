@@ -4,12 +4,33 @@
 
 .header__box{
 
+
 }
 
 .header__list{
-
+  padding-left: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .header__item{
-  
+  color: white;
+  list-style-type: none;
 }
+
+.header__link{
+  color: white;
+  text-decoration: none;
+}
+
+.header__link_active{
+  opacity: 0.8;
+  pointer-events: none;
+  text-decoration: underline;
+}
+
+
+.header__link:hover{
+  opacity: 0.8;
+}
+
