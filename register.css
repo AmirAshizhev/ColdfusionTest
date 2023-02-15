@@ -22,3 +22,17 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.register__text{
+  
+}
+
+.register__link{
+  color: #000;
+  text-decoration: none;
+}
+
+.register__link:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}

@@ -43,6 +43,7 @@
           </label>
         </fieldset>
         <button class="register__btn" type="submit" name="newUserSubmit">Зарегистрироваться</button>
+        <p class="register__text">Уже зарегестрированы? <a class="register__link" href="login.cfm">Войти</a></p>
       </cfform>
     </section>
   </main>
