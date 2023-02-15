@@ -6,11 +6,27 @@
   <title>Page Title</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='testing.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='header.css'>
   <script src='testing.js'></script>
 </head>
 <body>
   <header class="header">
-    <p class="header__text">Какой-то хедер</p>
+    <nav class="header__box">
+      <ul class="header__list">
+        <li class="header__item">
+          <a href="testing.cfm">ввести ошибку</a>
+        </li>
+        <li class="header__item">
+          <a href="errorList.cfm">список ошибок</a>
+        </li>
+        <li class="header__item">
+          <a href="userList.cfm">список пользоваетелей</a>
+        </li>
+        <li class="header__item">
+          <a href="">выход из системы</a>
+        </li>
+      </ul>
+    </nav>
   </header>
   <main class="main">
     <h1>А вот и пользователи</h1>
