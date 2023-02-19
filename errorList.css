@@ -1,0 +1,19 @@
+.error-list__bth{
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.error-list__bth:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.error-list__bth_edit{
+  color: black;
+  background-color: gray;
+}
+
+.error-list__bth_history{
+  color: white;
+  background-color: black;
+}

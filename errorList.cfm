@@ -13,6 +13,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='testing.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='header.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='errorList.css'>
   <script src='testing.js'></script>
 </head>
 <body>
@@ -61,9 +62,8 @@
             <td>#error.id_urgency#</td>
             <td>#error.id_criticality#</td>
             <td>
-              <a href="index.cfm">Редактировать</a>
-              <button>Удалить</button>
-              <a href="history.cfm">История</a>
+              <a class="error-list__bth error-list__bth_edit" href="index.cfm">Изменение статуса ошибки</a>
+              <a class="error-list__bth error-list__bth_history"href="history.cfm">История</a>
             </td>
           </tr>
         </cfoutput>
