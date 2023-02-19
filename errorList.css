@@ -1,6 +1,8 @@
 .error-list__bth{
   text-decoration: none;
   margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .error-list__bth:hover{

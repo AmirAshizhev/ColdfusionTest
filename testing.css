@@ -7,6 +7,25 @@ body{
 }
 
 
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 0px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+  max-width: 270px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
 .header{
   background-color: brown;
   width: 100%;
