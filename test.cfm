@@ -16,7 +16,7 @@
     INSERT INTO `error` (`date`, `note`, `discription`, `id_user`, `id_status`, `id_urgency`, `id_criticality`) VALUES (CURRENT_TIMESTAMP(), '#form.note#', '#form.discription#', #form.id_user#, #form.status#, #form.urgency#, #form.criticality#);
   </cfquery>
 
-  <cflocation url="testing.cfm" >
+  <cflocation url="index.cfm" >
 </cfif>
 
 

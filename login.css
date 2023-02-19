@@ -22,3 +22,14 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.login__link{
+  color: #000;
+  text-decoration: none;
+}
+
+.login__link:hover{
+  opacity: 0.8;
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -23,9 +23,6 @@
   cursor: pointer;
 }
 
-.register__text{
-  
-}
 
 .register__link{
   color: #000;
@@ -35,4 +32,5 @@
 .register__link:hover{
   opacity: 0.8;
   cursor: pointer;
+  text-decoration: underline;
 }

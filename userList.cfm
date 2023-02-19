@@ -1,3 +1,7 @@
+<cfquery  datasource="test" name="user">
+  SELECT * FROM user;
+</cfquery>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +18,7 @@
     <nav class="header__box">
       <ul class="header__list">
         <li class="header__item">
-          <a class="header__link" href="testing.cfm">ввести ошибку</a>
+          <a class="header__link" href="index.cfm">ввести ошибку</a>
         </li>
         <li class="header__item">
           <a class="header__link" href="errorList.cfm">список ошибок</a>
@@ -30,16 +34,24 @@
   </header>
   <main class="main">
     <h1>А вот и пользователи</h1>
-    <cfquery  datasource="test" name="user">
-      SELECT * FROM user;
-    </cfquery>
-
-    <cfoutput  query="user">
-      #user.id_user#
-      #user.name#
-      #user.surname#
-      <br />
-    </cfoutput>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+        </tr>
+      </thead>
+      <tbody>
+        <cfoutput  query="user">
+          <tr>
+            <td>#user.id_user#</td>
+            <td>#user.name#</td>
+            <td>#user.surname#</td>
+          </tr>
+        </cfoutput>
+      </tbody>
+    </table>
   </main>
   <footer class="footer">
     <p class="header__text">Какой-то футер</p>

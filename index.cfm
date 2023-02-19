@@ -63,7 +63,7 @@
     <nav class="header__box">
       <ul class="header__list">
         <li class="header__item">
-          <a class="header__link header__link_active" href="testing.cfm">ввести ошибку</a>
+          <a class="header__link header__link_active" href="index.cfm">ввести ошибку</a>
         </li>
         <li class="header__item">
           <a class="header__link" href="errorList.cfm">список ошибок</a>
@@ -92,10 +92,10 @@
     <cfform id="errorForm" action="test.cfm">
       <fieldset class="main__fieldset">
         <label>
-          <cfinput type="text" required="true" name="note"  message="название ошибки">
+          <cfinput type="text" required="true" name="note"  placeholder="название ошибки">
         </label>
         <label>
-          <cftextarea required="true" name="discription"  message="описание ошибки"></cftextarea>
+          <cftextarea required="true" name="discription"  placeholder="описание ошибки"></cftextarea>
         </label>
 
         <cfselect
