@@ -135,18 +135,22 @@
     <cfquery  datasource="test" name="user">
       SELECT * FROM user;
     </cfquery>
-    <!--<cfoutput  query="user">
+    <!---<cfoutput  query="user">
       #user.ColumnList#<br />
       #user.CurrentRow#<br />
-    </cfoutput>-->
+    </cfoutput>
     <cfoutput  query="user">
       #user.id_user#
       #user.name#
       #user.surname#<br />
-    </cfoutput>
+    </cfoutput>--->
 
     <cfquery  datasource="test" name="error">
-      SELECT * FROM error;
+
+      <cfquery datasource="test" name="criticality">
+        SELECT * FROM error;
+        SELECT criticality FROM criticality WHERE id_criticality=error.id_criticality
+      </cfquery>
     </cfquery>
 
     <cfoutput  query="error">

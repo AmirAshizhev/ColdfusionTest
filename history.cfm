@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <cfoutput  query="">
+        <!---<cfoutput  query="">
           <tr>
             <td>#error.id_error#</td>
             <td>#error.note#</td>
@@ -39,7 +39,7 @@
             <td>#error.date#</td>
             <td>#error.id_user#</td>
           </tr>
-        </cfoutput>
+        </cfoutput>--->
       </tbody>
     </table>
   </main>
