@@ -18,6 +18,7 @@
   ORDER BY status ASC
 </cfquery>
 
+
 <!---Данные о текущем пользователе--->
 
 <cfquery datasource="test"  name="user">
@@ -145,23 +146,34 @@
       #user.surname#<br />
     </cfoutput>--->
 
-    <cfquery  datasource="test" name="error">
-
-      <cfquery datasource="test" name="criticality">
-        SELECT * FROM error;
-        SELECT criticality FROM criticality WHERE id_criticality=error.id_criticality
+    <!---<cfquery  datasource="test"  name="error">
+      SELECT * FROM error;
+     <cfquery datasource="test" name="criticality">
+        SELECT id_criticality, criticality FROM criticality WHERE error.id_criticality=id_criticality
       </cfquery>
+    </cfquery>--->
+
+    <!---Получается name это просто название самого запроса--->
+    <cfquery  datasource="test"  name="errorsInfo">
+      SELECT * FROM error, criticality, urgency, status, user 
+      WHERE error.id_criticality = criticality.id_criticality 
+        AND error.id_urgency = urgency.id_urgency
+        AND error.id_status = status.id_status
+        AND error.id_user = user.id_user
+        ORDER BY error.id_error ASC
     </cfquery>
 
-    <cfoutput  query="error">
-      #error.id_error#
-      #error.date#
-      #error.note#
-      #error.discription#
-      #error.id_user#
-      #error.id_status#
-      #error.id_urgency#
-      #error.id_criticality#
+
+
+    <cfoutput  query="errorsInfo">
+      #errorsInfo.id_error#
+      #errorsInfo.date#
+      #errorsInfo.note#
+      #errorsInfo.discription#
+      #errorsInfo.surname#
+      #errorsInfo.status#
+      #errorsInfo.urgency#
+      #errorsInfo.criticality#
       <br />
     </cfoutput>
 

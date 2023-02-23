@@ -1,5 +1,10 @@
-<cfquery  datasource="test" name="error">
-  SELECT * FROM error;
+<cfquery  datasource="test"  name="errorsInfo">
+  SELECT * FROM error, criticality, urgency, status, user 
+  WHERE error.id_criticality = criticality.id_criticality 
+    AND error.id_urgency = urgency.id_urgency
+    AND error.id_status = status.id_status
+    AND error.id_user = user.id_user
+    ORDER BY error.id_error ASC
 </cfquery>
 
 
@@ -51,16 +56,16 @@
         </tr>
       </thead>
       <tbody>
-        <cfoutput  query="error">
+        <cfoutput  query="errorsInfo">
           <tr>
-            <td>#error.id_error#</td>
-            <td>#error.note#</td>
-            <td>#error.discription#</td>
-            <td>#error.date#</td>
-            <td>#error.id_user#</td>
-            <td>#error.id_status#</td>
-            <td>#error.id_urgency#</td>
-            <td>#error.id_criticality#</td>
+            <td>#errorsInfo.id_error#</td>
+            <td>#errorsInfo.note#</td>
+            <td>#errorsInfo.discription#</td>
+            <td>#errorsInfo.date#</td>
+            <td>#errorsInfo.name#</td>
+            <td>#errorsInfo.status#</td>
+            <td>#errorsInfo.urgency#</td>
+            <td>#errorsInfo.criticality#</td>
             <td>
               <a class="error-list__bth error-list__bth_edit" href="index.cfm">Изменение статуса ошибки</a>
               <a class="error-list__bth error-list__bth_history"href="history.cfm">История</a>
