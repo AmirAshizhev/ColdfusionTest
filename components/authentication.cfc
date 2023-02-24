@@ -30,20 +30,22 @@
       SELECT * FROM user
     </cfquery>
 
-    <!---Если пользователь один из бд--->
-    <cfif arguments.userPassword EQ ''>
-      <cfset arrayAppend(aErrorMessages, 'Введите введите пароль')/>  
+    <!---Если пользователь один в бд--->
+    <cfif loginUser.RecordCount EQ 1>
+      <cflogin >
+        <cfloginuser name="#loginUser.name#" password="#loginUser.password#" roles="" >
+      </cflogin>
+
+      <cfset session.stLoggedInUser = {'userName' = loginUser.name, 'userSurname' = loginUser.surname, 'userID' = loginUser.id_user}/>
+      <cfset var isUserLoggedIn = true />
     </cfif>
-
-
-
-
     <cfreturn isUserLoggedIn />
   </cffunction>
 
     <!---выход--->
   <cffunction name="doLogout"  access="public" output="false"  returntype="void" >
-      
+    <cfset structDelete(session,'stLoggedInUser') />
+    <cflogout />
   </cffunction>
   
 </cfcomponent>
