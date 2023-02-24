@@ -11,27 +11,31 @@
 <body>
   <main>
     <section>
-      <form class="login__form">
+      <cfform class="login__form">
         <h2>Вход</h2>
         <fieldset class="login__fieldset">
           <label>
-            <input 
+            <cfinput 
               type="text"
               placeholder="имя"
-              required
+              required="true"
+              name="name"
+              query="name"
             />
           </label>
           <label>
-            <input 
-              type="text"
+            <cfinput 
+              type="password"
               placeholder="пароль"
-              required
+              required="true"
+              name="password"
+              query="password"
             />
           </label>
         </fieldset>
         <button class="login__btn">Войти</button>
         <p class="login__text">Еще не зарегестрированы? <a class="login__link" href="register.cfm">Зарегистрироваться</a></p>
-      </form>
+      </cfform>
     </section>
   </main>
 </body>

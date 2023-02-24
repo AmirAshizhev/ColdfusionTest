@@ -1,4 +1,4 @@
-<cfquery  datasource="test" name="user">
+<cfquery name="user">
   SELECT * FROM user;
 </cfquery>
 

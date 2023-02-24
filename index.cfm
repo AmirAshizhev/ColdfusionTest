@@ -1,18 +1,18 @@
 
 <!---данные для выпадающих списков--->
-<cfquery datasource="test"  name="criticality">
+<cfquery name="criticality">
   SELECT id_criticality, criticality
   FROM criticality
   ORDER BY criticality ASC
 </cfquery>
 
-<cfquery datasource="test"  name="urgency">
+<cfquery name="urgency">
   SELECT id_urgency, urgency
   FROM urgency
   ORDER BY urgency ASC
 </cfquery>
 
-<cfquery datasource="test"  name="status">
+<cfquery name="status">
   SELECT id_status, status
   FROM status
   ORDER BY status ASC
@@ -21,7 +21,7 @@
 
 <!---Данные о текущем пользователе--->
 
-<cfquery datasource="test"  name="user">
+<cfquery name="user">
   SELECT id_user
   FROM user
 </cfquery>
@@ -133,7 +133,7 @@
       <button type="submit" name="newErrorSubmit">Записать ошибку</button>
     </cfform>
 
-    <cfquery  datasource="test" name="user">
+    <cfquery name="user">
       SELECT * FROM user;
     </cfquery>
     <!---<cfoutput  query="user">
@@ -154,7 +154,7 @@
     </cfquery>--->
 
     <!---Получается name это просто название самого запроса--->
-    <cfquery  datasource="test"  name="errorsInfo">
+    <cfquery name="errorsInfo">
       SELECT * FROM error, criticality, urgency, status, user 
       WHERE error.id_criticality = criticality.id_criticality 
         AND error.id_urgency = urgency.id_urgency
@@ -165,7 +165,7 @@
 
 
 
-    <cfoutput  query="errorsInfo">
+    <cfoutput query="errorsInfo">
       #errorsInfo.id_error#
       #errorsInfo.date#
       #errorsInfo.note#

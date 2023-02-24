@@ -1,4 +1,4 @@
-<cfquery  datasource="test"  name="errorsInfo">
+<cfquery  name="errorsInfo">
   SELECT * FROM error, criticality, urgency, status, user 
   WHERE error.id_criticality = criticality.id_criticality 
     AND error.id_urgency = urgency.id_urgency
