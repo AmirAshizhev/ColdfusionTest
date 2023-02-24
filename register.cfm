@@ -11,7 +11,7 @@
 <body>
   <main>
     <section>
-      <cfform class="register__form" action="test.cfm">
+      <cfform class="register__form" action="submit.cfm">
         <h2>Регистрация</h2>
         <fieldset class="register__fieldset">
           <label>

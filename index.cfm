@@ -90,7 +90,7 @@
       </cfoutput>
     </cfif>
 --->
-    <cfform id="errorForm" action="test.cfm">
+    <cfform id="errorForm" action="submit.cfm">
       <fieldset class="main__fieldset">
         <label>
           <cfinput type="text" required="true" name="note"  placeholder="название ошибки">
