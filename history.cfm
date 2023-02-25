@@ -4,15 +4,14 @@
 </cfif>
 
 
-<cfif isDefined(URL.id)>
+<cfquery name="errorHistory">
+  SELECT * FROM error_history, action, user
+  WHERE error_history.id_action = action.id_action AND
+  error_history.id_user = user.id_user AND
+  error_history.id_error = <cfqueryparam value="#URL.id#" cfsqltype="cf_sql_integer" >
 
-</cfif>
-  <cfquery name="errorHistory">
-    SELECT * FROM error_history, action, user
-    WHERE error_history.id_action = action.id_action AND
-    error_history.id_user = user.id_user
-    ORDER BY error_history.date ASC
-  </cfquery>
+  ORDER BY error_history.date ASC
+</cfquery>
 
 <!DOCTYPE html>
 <html>
@@ -36,16 +35,7 @@
     </nav>
   </header>
   <main>
-    <h1>История действий над ошибкой id:  </h1>
-    <!---<cfoutput query="errorHistory"><p>#errorHistory.id_error#</p></cfoutput>--->
-      <cfoutput  query="errorHistory">
-          #errorHistory.id_error#
-          
-          
-          
-          
-          <br/>
-      </cfoutput>
+    <h1>История действий над ошибкой c id:  <cfoutput query="errorHistory" maxrows="1">#errorHistory.id_error#</cfoutput></h1>
     <table>
       <thead>
         <tr>
