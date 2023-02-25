@@ -163,7 +163,9 @@
         ORDER BY error.id_error ASC
     </cfquery>
 
-
+    <cfif structKeyExists(session,'stLoggedInUser')>
+      <p><cfoutput ><p>#session.stLoggedInUser.userID#<p></cfoutput></p>
+    </cfif>
 
     <cfoutput query="errorsInfo">
       #errorsInfo.id_error#

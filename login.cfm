@@ -1,3 +1,12 @@
+<cfif structKeyExists(form, 'loginSubmit')>
+  <cfset authentication = createObject("component", 'testTask.components.authentication')>
+
+  <cfset aErrorMessage = authentication.validateUser(form.name, form.password) />
+  <cfif arrayIsEmpty(aErrorMessage)>
+    <cfset isUserLoggedIn = authentication.doLogin(form.name, form.password)/>
+  </cfif>
+</cfif>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +22,10 @@
     <section>
       <cfform class="login__form">
         <h2>Вход</h2>
+        <cfif structKeyExists(session,'stLoggedInUser')>
+          <p>привет<cfoutput ><p>#session.stLoggedInUser.userName#<p></cfoutput></p>
+        </cfif>
+        
         <fieldset class="login__fieldset">
           <label>
             <cfinput 
@@ -33,7 +46,7 @@
             />
           </label>
         </fieldset>
-        <button class="login__btn">Войти</button>
+        <button class="login__btn" name="loginSubmit" type="submit">Войти</button>
         <p class="login__text">Еще не зарегестрированы? <a class="login__link" href="register.cfm">Зарегистрироваться</a></p>
       </cfform>
     </section>

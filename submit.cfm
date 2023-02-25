@@ -13,7 +13,7 @@
   <!----отправка данных формы--->
   <cfset form.id_user = 1>
   <cfquery  datasource="test">
-    INSERT INTO `error` (`date`, `note`, `discription`, `id_user`, `id_status`, `id_urgency`, `id_criticality`) VALUES (CURRENT_TIMESTAMP(), '#form.note#', '#form.discription#', #form.id_user#, #form.status#, #form.urgency#, #form.criticality#);
+    INSERT INTO `error` (`date`, `note`, `discription`, `id_user`, `id_status`, `id_urgency`, `id_criticality`) VALUES (CURRENT_TIMESTAMP(), '#form.note#', '#form.discription#', #session.stLoggedInUser.userID#, #form.status#, #form.urgency#, #form.criticality#);
   </cfquery>
 
   <cflocation url="index.cfm" >

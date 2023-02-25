@@ -8,7 +8,7 @@
     <cfset var aErrorMessages = arrayNew(1) />
 
     <cfif arguments.userName EQ ''>
-      <cfset arrayAppend(aErrorMessages, 'Введите email')/>  
+      <cfset arrayAppend(aErrorMessages, 'Введите имя пользователя')/>  
     </cfif>
 
     <cfif arguments.userPassword EQ ''>
@@ -28,24 +28,28 @@
     <!---данные пользователя из бд--->
     <cfquery  name="loginUser">
       SELECT * FROM user
+      WHERE name = '#arguments.userName#' AND password = '#arguments.userPassword#'
     </cfquery>
 
     <!---Если пользователь один в бд--->
     <cfif loginUser.RecordCount EQ 1>
       <cflogin >
-        <cfloginuser name="#loginUser.name#" password="#loginUser.password#" roles="" >
+        <cfloginuser name="#loginUser.name#" password="#loginUser.password#" roles="1" >
       </cflogin>
 
       <cfset session.stLoggedInUser = {'userName' = loginUser.name, 'userSurname' = loginUser.surname, 'userID' = loginUser.id_user}/>
       <cfset var isUserLoggedIn = true />
     </cfif>
+    <cflocation url="index.cfm" >
     <cfreturn isUserLoggedIn />
+    
   </cffunction>
 
     <!---выход--->
   <cffunction name="doLogout"  access="public" output="false"  returntype="void" >
     <cfset structDelete(session,'stLoggedInUser') />
     <cflogout />
+    
   </cffunction>
   
 </cfcomponent>
