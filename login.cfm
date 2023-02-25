@@ -1,10 +1,15 @@
 <cfif structKeyExists(form, 'loginSubmit')>
-  <cfset authentication = createObject("component", 'testTask.components.authentication')>
+  <cfset authentication = createObject("component", 'testTask.components.authentication')/>
 
-  <cfset aErrorMessage = authentication.validateUser(form.name, form.password) />
-  <cfif arrayIsEmpty(aErrorMessage)>
+  <cfset aErrorMessages = authentication.validateUser(form.name, form.password) />
+  <cfif arrayIsEmpty(aErrorMessages)>
     <cfset isUserLoggedIn = authentication.doLogin(form.name, form.password)/>
   </cfif>
+</cfif>
+
+<!---Выход из системы--->
+<cfif structKeyExists(url,'logout')>
+  <cfset createObject("component", 'testTask.components.authentication').doLogout()/>
 </cfif>
 
 <!DOCTYPE html>
@@ -22,10 +27,17 @@
     <section>
       <cfform class="login__form">
         <h2>Вход</h2>
-        <cfif structKeyExists(session,'stLoggedInUser')>
-          <p>привет<cfoutput ><p>#session.stLoggedInUser.userName#<p></cfoutput></p>
+        <cfif structKeyExists(variables,'aErrorMessage') AND NOT arrayIsEmpty(aErrorMessages)>
+          <cfoutput>
+            <cfloop array="#aErrorMessages#" item="message">
+              <p style="color: red;">#message#</p>
+            </cfloop>
+          </cfoutput>
         </cfif>
-        
+        <!---Если пользователь не найден--->
+        <cfif structKeyExists(variables,'isUserLoggedIn') AND isUserLoggedIn EQ false>
+          <p style="color: red;">Пользователь не найден</p>
+        </cfif>
         <fieldset class="login__fieldset">
           <label>
             <cfinput 

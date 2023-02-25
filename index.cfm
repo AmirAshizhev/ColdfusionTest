@@ -73,13 +73,17 @@
           <a  class="header__link"href="userList.cfm">список пользоваетелей</a>
         </li>
         <li class="header__item">
-          <a class="header__link" href="login.cfm">выход из системы</a>
+          <a class="header__link" href="login.cfm?logout">выход из системы</a>
         </li>
       </ul>
     </nav>
   </header>
   <main class="main">
-    <h1>Пора вносить ошибки</h1>
+    <h1>
+      <cfif structKeyExists(session,'stLoggedInUser')>
+        <cfoutput >#session.stLoggedInUser.userName# #session.stLoggedInUser.userSurname#</cfoutput>
+      </cfif>
+      , пора вносить ошибки!</h1>
 
     <!---<cfif isDefined('aErrorMessages') AND NOT ArrayIsEmpty(aErrorMessages)>
       <cfoutput >
@@ -163,9 +167,6 @@
         ORDER BY error.id_error ASC
     </cfquery>
 
-    <cfif structKeyExists(session,'stLoggedInUser')>
-      <p><cfoutput ><p>#session.stLoggedInUser.userID#<p></cfoutput></p>
-    </cfif>
 
     <cfoutput query="errorsInfo">
       #errorsInfo.id_error#
