@@ -7,6 +7,10 @@
     ORDER BY error.id_error ASC
 </cfquery>
 
+<!---проверка вошел ли пользователь--->
+<cfif NOT isUserLoggedIn()>
+  <cflocation url="login.cfm?noaccess" >
+</cfif>
 
 
 <!DOCTYPE html>

@@ -1,3 +1,7 @@
+<!---проверка вошел ли пользователь--->
+<cfif NOT isUserLoggedIn()>
+  <cflocation url="login.cfm?noaccess" >
+</cfif>
 
 <!---данные для выпадающих списков--->
 <cfquery name="criticality">

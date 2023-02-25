@@ -2,6 +2,11 @@
   SELECT * FROM user;
 </cfquery>
 
+<!---проверка вошел ли пользователь--->
+<cfif NOT isUserLoggedIn()>
+  <cflocation url="login.cfm?noaccess" >
+</cfif>
+
 <!DOCTYPE html>
 <html>
 <head>

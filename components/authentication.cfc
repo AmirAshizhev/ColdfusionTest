@@ -33,14 +33,16 @@
 
     <!---Если пользователь один в бд--->
     <cfif loginUser.RecordCount EQ 1>
+      <!---обернуть в cflogin нужно, чтобы cf знал, что пользователь в системе--->
       <cflogin >
         <cfloginuser name="#loginUser.name#" password="#loginUser.password#" roles="1" >
       </cflogin>
 
       <cfset session.stLoggedInUser = {'userName' = loginUser.name, 'userSurname' = loginUser.surname, 'userID' = loginUser.id_user}/>
       <cfset var isUserLoggedIn = true />
+      <cflocation url="index.cfm" >
     </cfif>
-    <cflocation url="index.cfm" >
+
     <cfreturn isUserLoggedIn />
     
   </cffunction>
