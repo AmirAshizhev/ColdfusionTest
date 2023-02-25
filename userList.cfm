@@ -2,7 +2,7 @@
   SELECT * FROM user;
 </cfquery>
 
-<!---проверка вошел ли пользователь--->
+<!---Запрет перехода на страницу через url, если пользователь не залогинился--->
 <cfif NOT isUserLoggedIn()>
   <cflocation url="login.cfm?noaccess" >
 </cfif>

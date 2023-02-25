@@ -1,3 +1,19 @@
+<!---Запрет перехода на страницу через url, если пользователь не залогинился--->
+<cfif NOT isUserLoggedIn()>
+  <cflocation url="login.cfm?noaccess" >
+</cfif>
+
+
+<cfif isDefined(URL.id)>
+
+</cfif>
+  <cfquery name="errorHistory">
+    SELECT * FROM error_history, action, user
+    WHERE error_history.id_action = action.id_action AND
+    error_history.id_user = user.id_user
+    ORDER BY error_history.date ASC
+  </cfquery>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +36,16 @@
     </nav>
   </header>
   <main>
-    <h1>История действий над ошибкой id: </h1>
+    <h1>История действий над ошибкой id:  </h1>
+    <!---<cfoutput query="errorHistory"><p>#errorHistory.id_error#</p></cfoutput>--->
+      <cfoutput  query="errorHistory">
+          #errorHistory.id_error#
+          
+          
+          
+          
+          <br/>
+      </cfoutput>
     <table>
       <thead>
         <tr>
@@ -31,15 +56,14 @@
         </tr>
       </thead>
       <tbody>
-        <!---<cfoutput  query="">
+        <cfoutput  query="errorHistory">
           <tr>
-            <td>#error.id_error#</td>
-            <td>#error.note#</td>
-            <td>#error.discription#</td>
-            <td>#error.date#</td>
-            <td>#error.id_user#</td>
+            <td>#errorHistory.date#</td>
+            <td>#errorHistory.action#</td>
+            <td>#errorHistory.comment#</td>
+            <td>#errorHistory.name# #errorHistory.surname#</td>
           </tr>
-        </cfoutput>--->
+        </cfoutput>
       </tbody>
     </table>
   </main>
