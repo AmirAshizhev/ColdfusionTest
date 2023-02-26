@@ -77,6 +77,9 @@
           <a  class="header__link"href="userList.cfm">список пользоваетелей</a>
         </li>
         <li class="header__item">
+          <a  class="header__link"href="profile.cfm">ред. профиля</a>
+        </li>
+        <li class="header__item">
           <a class="header__link" href="login.cfm?logout">выход из системы</a>
         </li>
       </ul>

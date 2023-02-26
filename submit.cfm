@@ -33,17 +33,13 @@
   <cflocation url="login.cfm?success" >
 </cfif>
 
-
- <!--- <!----Изменения ошибки--->
-<cfif structKeyExists(form, 'newErrorAction')>
+  <!---Редактирование профиля--->
+<cfif structKeyExists(form, 'updateUserSubmit')>
   <!----отправка данных формы--->
-  <cfquery  datasource="test">
-    INSERT INTO `get_test_db`.`error_history` (`id_action`, `id_user`, `id_error`, `date`, `comment`) VALUES ('#form.action#', #session.stLoggedInUser.userID#, '#URL.id#', CURRENT_TIMESTAMP(), '#form.comment#');
-  </cfquery>
 
   <cfquery  datasource="test">
-    INSERT INTO `get_test_db`.`error` (`id_status`) VALUES (#form.status#);
+    UPDATE `get_test_db`.`user` SET `name` = '#form.name#', `surname` = '#form.surname#', `password` = '#form.password#' WHERE (`id_user` = #session.stLoggedInUser.userID#);
   </cfquery>
 
-  <cflocation url="errorList.cfm?success" >
-</cfif>--->
+  <cflocation url="profile.cfm?success" >
+</cfif>

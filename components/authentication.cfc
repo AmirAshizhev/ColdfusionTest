@@ -38,7 +38,7 @@
         <cfloginuser name="#loginUser.name#" password="#loginUser.password#" roles="1" >
       </cflogin>
 
-      <cfset session.stLoggedInUser = {'userName' = loginUser.name, 'userSurname' = loginUser.surname, 'userID' = loginUser.id_user}/>
+      <cfset session.stLoggedInUser = {'userName' = loginUser.name, 'userSurname' = loginUser.surname, 'userID' = loginUser.id_user, 'userPassword' = loginUser.password}/>
       <cfset var isUserLoggedIn = true />
       <cflocation url="index.cfm" >
     </cfif>
