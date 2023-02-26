@@ -21,7 +21,7 @@
 
 
 
-
+  <!---Новый пользователь--->
 <cfif structKeyExists(form, 'newUserSubmit')>
 
 
@@ -32,3 +32,18 @@
 
   <cflocation url="login.cfm?success" >
 </cfif>
+
+
+ <!--- <!----Изменения ошибки--->
+<cfif structKeyExists(form, 'newErrorAction')>
+  <!----отправка данных формы--->
+  <cfquery  datasource="test">
+    INSERT INTO `get_test_db`.`error_history` (`id_action`, `id_user`, `id_error`, `date`, `comment`) VALUES ('#form.action#', #session.stLoggedInUser.userID#, '#URL.id#', CURRENT_TIMESTAMP(), '#form.comment#');
+  </cfquery>
+
+  <cfquery  datasource="test">
+    INSERT INTO `get_test_db`.`error` (`id_status`) VALUES (#form.status#);
+  </cfquery>
+
+  <cflocation url="errorList.cfm?success" >
+</cfif>--->

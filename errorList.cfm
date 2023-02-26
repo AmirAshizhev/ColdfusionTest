@@ -71,7 +71,7 @@
             <td>#errorsInfo.urgency#</td>
             <td>#errorsInfo.criticality#</td>
             <td>
-              <a class="error-list__bth error-list__bth_edit" href="index.cfm">Изменение статуса ошибки</a>
+              <a class="error-list__bth error-list__bth_edit" href="actionForm.cfm?id=#errorsInfo.id_error#">Изменение статуса ошибки</a>
               <a class="error-list__bth error-list__bth_history" href="history.cfm?id=#errorsInfo.id_error#">История</a>
             </td>
           </tr>
