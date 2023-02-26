@@ -21,7 +21,7 @@
 
 
 
-  <!---Новый пользователь--->
+<!---Новый пользователь--->
 <cfif structKeyExists(form, 'newUserSubmit')>
 
 
@@ -33,7 +33,7 @@
   <cflocation url="login.cfm?success" >
 </cfif>
 
-  <!---Редактирование профиля--->
+<!---Редактирование профиля--->
 <cfif structKeyExists(form, 'updateUserSubmit')>
   <!----отправка данных формы--->
 

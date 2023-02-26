@@ -30,27 +30,6 @@
   FROM user
 </cfquery>
 
-<!---<cfset errorForm.id_user = 1>
-<cfset errorForm.id_user = 1>--->
-
-<!---<cfif structKeyExists(form, 'newErrorSubmit')>
-
-  <!----валидация полей формы--->
-  <cfset aErrorMessages = arrayNew(1) />
-  <cfif form.note EQ ''>
-    <cfset arrayAppend(aErrorMessages,'Введите название ошибки')/>
-  </cfif>
-
-  <cfif form.discription EQ ''>
-    <cfset arrayAppend(aErrorMessages,'Введите описание ошибки')/>
-  </cfif>
-
-  <!----отправка данных формы--->
-  <cfset form.id_user = 1>
-  <cfquery  datasource="test">
-    INSERT INTO `error` (`date`, `note`, `discription`, `id_user`, `id_status`, `id_urgency`, `id_criticality`) VALUES (CURRENT_TIMESTAMP(), '#form.note#', '#form.discription#', #form.id_user#, #form.status#, #form.urgency#, #form.criticality#);
-  </cfquery>
-</cfif>--->
 
 <!DOCTYPE html>
 <html>
@@ -91,16 +70,6 @@
         <cfoutput >#session.stLoggedInUser.userName# #session.stLoggedInUser.userSurname#</cfoutput>
       </cfif>
       , пора вносить ошибки!</h1>
-
-    <!---<cfif isDefined('aErrorMessages') AND NOT ArrayIsEmpty(aErrorMessages)>
-      <cfoutput >
-        <cfloop  array="aErrorMessages" index="message">
-          <p>#message#</p>
- 
-        </cfloop>
-      </cfoutput>
-    </cfif>
---->
     <cfform id="errorForm" action="submit.cfm">
       <fieldset class="main__fieldset">
         <label>
@@ -147,47 +116,7 @@
     <cfquery name="user">
       SELECT * FROM user;
     </cfquery>
-    <!---<cfoutput  query="user">
-      #user.ColumnList#<br />
-      #user.CurrentRow#<br />
-    </cfoutput>
-    <cfoutput  query="user">
-      #user.id_user#
-      #user.name#
-      #user.surname#<br />
-    </cfoutput>--->
 
-    <!---<cfquery  datasource="test"  name="error">
-      SELECT * FROM error;
-     <cfquery datasource="test" name="criticality">
-        SELECT id_criticality, criticality FROM criticality WHERE error.id_criticality=id_criticality
-      </cfquery>
-    </cfquery>--->
-
-    <!---Получается name это просто название самого запроса--->
-    <cfquery name="errorsInfo">
-      SELECT * FROM error, criticality, urgency, status, user 
-      WHERE error.id_criticality = criticality.id_criticality 
-        AND error.id_urgency = urgency.id_urgency
-        AND error.id_status = status.id_status
-        AND error.id_user = user.id_user
-        ORDER BY error.id_error ASC
-    </cfquery>
-
-
-    <cfoutput query="errorsInfo">
-      #errorsInfo.id_error#
-      #errorsInfo.date#
-      #errorsInfo.note#
-      #errorsInfo.discription#
-      #errorsInfo.surname#
-      #errorsInfo.status#
-      #errorsInfo.urgency#
-      #errorsInfo.criticality#
-      <br />
-    </cfoutput>
-
-    
   </main>
   <footer class="footer">
     <p class="header__text">Какой-то футер</p>

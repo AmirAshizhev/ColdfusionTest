@@ -22,7 +22,7 @@
 </cfquery>
 
 
-  <!----Изменения ошибки--->
+<!----Изменения ошибки--->
 <cfif structKeyExists(form, 'newErrorActionSubmit')>
   <!----отправка данных формы--->
   <cfquery  datasource="test">
@@ -84,31 +84,9 @@
         >
           <option value="0">Выберите Действие</option>
         </cfselect>
-
-<!---        <cfselect 
-          name="criticality"  
-          query="criticality"
-          value="id_criticality" 
-          display="criticality" 
-          queryposition="below"
-        >
-          <option value="0">Выберите критичность</option>
-        </cfselect>--->
-
       </fieldset>
       <button type="submit" name="newErrorActionSubmit">Сохранить изменения ошибки</button>
     </cfform>
-    <cfoutput query="errorsInfo">
-      #errorsInfo.id_error#
-      #errorsInfo.date#
-      #errorsInfo.note#
-      #errorsInfo.discription#
-      #errorsInfo.surname#
-      #errorsInfo.status#
-      #errorsInfo.urgency#
-      #errorsInfo.id_criticality#
-      <br />
-    </cfoutput>
   </main>
 </body>
 </html>
