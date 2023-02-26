@@ -30,5 +30,5 @@
     INSERT INTO `get_test_db`.`user` (`name`, `surname`, `password`) VALUES ('#form.name#', '#form.surname#', '#form.password#');
   </cfquery>
 
-  <cflocation url="login.cfm" >
+  <cflocation url="login.cfm?success" >
 </cfif>

@@ -31,6 +31,9 @@
         <cfif structKeyExists(url,'noaccess')>
           <p style="color: red;">Нет доступа к этой странице, пожалуйста войдите в систему</p>
         </cfif>
+        <cfif structKeyExists(url,'success')>
+          <p style="color: green;">Пользователь успешно зарегистрирован</p>
+        </cfif>
 
         <cfif structKeyExists(variables,'aErrorMessage') AND NOT arrayIsEmpty(aErrorMessages)>
           <cfoutput>
