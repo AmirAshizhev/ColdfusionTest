@@ -4,7 +4,7 @@
 </cfif>
 
 
-<cfquery name="errorHistory">
+<cfquery name="errorHistory"  result="queryResult">
   SELECT * FROM error_history, action, user
   WHERE error_history.id_action = action.id_action AND
   error_history.id_user = user.id_user AND
@@ -35,7 +35,7 @@
     </nav>
   </header>
   <main>
-    <h1>История действий над ошибкой c id:  <cfoutput query="errorHistory" maxrows="1">#errorHistory.id_error#</cfoutput></h1>
+    <h1>История действий над ошибкой c номером: <cfoutput query="errorHistory" maxrows="1">#errorHistory.id_error#</cfoutput></h1>
     <table>
       <thead>
         <tr>
@@ -45,7 +45,8 @@
           <th>Пользователь</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody>          
+      <cfif queryResult.RecordCount GTE 1 >
         <cfoutput  query="errorHistory">
           <tr>
             <td>#errorHistory.date#</td>
@@ -54,6 +55,9 @@
             <td>#errorHistory.name# #errorHistory.surname#</td>
           </tr>
         </cfoutput>
+      <cfelse>
+        <P>У этой ошибки еще нет истории</P>
+      </cfif>
       </tbody>
     </table>
   </main>
