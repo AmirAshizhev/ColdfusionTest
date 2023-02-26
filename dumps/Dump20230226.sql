@@ -74,7 +74,7 @@ CREATE TABLE `error` (
   `id_error` int NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
   `note` varchar(45) DEFAULT NULL,
-  `discription` varchar(45) DEFAULT NULL,
+  `discription` varchar(1000) DEFAULT NULL,
   `id_user` int NOT NULL,
   `id_status` int NOT NULL,
   `id_urgency` int NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE `error` (
   CONSTRAINT `fk_error_status1` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`),
   CONSTRAINT `fk_error_urgency1` FOREIGN KEY (`id_urgency`) REFERENCES `urgency` (`id_urgency`),
   CONSTRAINT `fk_error_user1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `error` (
 
 LOCK TABLES `error` WRITE;
 /*!40000 ALTER TABLE `error` DISABLE KEYS */;
-INSERT INTO `error` VALUES (1,'2023-02-08 00:00:00','ошибка','ошибочка',1,1,1,1),(2,'2023-02-12 00:00:00','мистейка ','мистика',1,1,1,2),(3,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(4,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(5,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(6,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(7,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(22,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(23,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(24,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(25,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(55,'2023-02-12 20:29:15','11','22',1,4,3,1),(56,'2023-02-12 20:29:20','11','22',1,4,3,1),(57,'2023-02-12 21:17:08','11','22',1,4,3,1),(60,'2023-02-12 21:35:56','счс','чсчс',1,4,3,4),(61,'2023-02-12 21:36:04','счс','чсчс',1,4,3,4),(62,'2023-02-12 21:36:57','лось','зверье',1,4,1,4),(63,'2023-02-12 21:39:42','d','dd',1,4,3,1),(64,'2023-02-12 21:40:10','привет ','как твои дела?',1,4,3,1),(65,'2023-02-12 21:55:58','11','чсмиячсми',1,4,3,1),(66,'2023-02-19 19:17:02','дурацкая ошибка','при проверке данных ломается вся система',1,1,4,2),(67,'2023-02-19 19:17:31','дурацкая ошибка','при проверке данных ломается вся система',1,1,4,2);
+INSERT INTO `error` VALUES (1,'2023-02-08 00:00:00','ошибка','ошибочка',1,1,1,1),(2,'2023-02-12 00:00:00','мистейка ','мистика',1,1,1,2),(3,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(4,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(5,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(6,'2023-02-12 00:00:00','мистейник ','мистика',1,4,2,3),(7,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(22,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(23,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(24,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(25,'2023-02-12 00:00:00','мистейник ','мистика',1,2,2,3),(55,'2023-02-12 20:29:15','11','22',1,2,3,1),(56,'2023-02-12 20:29:20','11','22',1,4,3,1),(57,'2023-02-12 21:17:08','11','22',1,4,3,1),(60,'2023-02-12 21:35:56','счс','чсчс',1,4,3,4),(61,'2023-02-12 21:36:04','счс','чсчс',1,4,3,4),(62,'2023-02-12 21:36:57','лось','зверье',1,4,1,4),(63,'2023-02-12 21:39:42','d','dd',1,4,3,1),(64,'2023-02-12 21:40:10','привет ','как твои дела?',1,4,3,1),(65,'2023-02-12 21:55:58','11','чсмиячсми',1,4,3,1),(66,'2023-02-19 19:17:02','дурацкая ошибка','при проверке данных ломается вся система',1,1,4,2),(67,'2023-02-19 19:17:31','дурацкая ошибка','при проверке данных ломается вся система',1,1,4,2),(68,'2023-02-25 13:05:59','второй узер','тест лоя второго пользователя',2,1,3,2);
 /*!40000 ALTER TABLE `error` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,20 +109,20 @@ DROP TABLE IF EXISTS `error_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `error_history` (
+  `id_error_history` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_error` int NOT NULL,
-  `action` int DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `comment` varchar(1000) DEFAULT NULL,
   `id_action` int NOT NULL,
-  PRIMARY KEY (`id_user`,`id_error`,`id_action`),
+  PRIMARY KEY (`id_error_history`,`id_user`,`id_error`,`id_action`),
+  UNIQUE KEY `id_error_history_UNIQUE` (`id_error_history`),
   KEY `fk_user_has_error_error1_idx` (`id_error`),
   KEY `fk_user_has_error_user_idx` (`id_user`),
   KEY `fk_error_history_action1_idx` (`id_action`),
   CONSTRAINT `fk_error_history_action1` FOREIGN KEY (`id_action`) REFERENCES `action` (`id_action`),
-  CONSTRAINT `fk_user_has_error_error1` FOREIGN KEY (`id_error`) REFERENCES `error` (`id_error`),
-  CONSTRAINT `fk_user_has_error_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  CONSTRAINT `fk_user_has_error_error1` FOREIGN KEY (`id_error`) REFERENCES `error` (`id_error`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `error_history` (
 
 LOCK TABLES `error_history` WRITE;
 /*!40000 ALTER TABLE `error_history` DISABLE KEYS */;
-INSERT INTO `error_history` VALUES (1,1,1,'2023-02-08 00:00:00','да что с этим не так',1);
+INSERT INTO `error_history` VALUES (1,1,1,'2023-02-08 00:00:00','да что с этим не так',1),(2,1,1,'2023-02-18 00:00:00','тест для второй ошибки',2),(3,2,2,'2023-02-18 00:00:00','первая история второй ошибки',2),(4,3,3,'2023-02-26 12:43:59','первый коммент для 3 ошибки',2),(5,3,5,'2023-02-26 12:38:07','йцук',1),(6,3,6,'2023-02-26 12:51:02','шестая ошибка',1),(7,2,6,'2023-02-26 12:52:29','другой пользователь',2),(8,2,6,'2023-02-26 12:54:18','кобра',3),(9,2,6,'2023-02-26 12:57:55','тест',4),(11,2,6,'2023-02-26 13:02:35','трест',3),(12,2,6,'2023-02-26 13:05:57','новый тест',1),(13,2,6,'2023-02-26 13:10:25','решеие',3),(14,2,63,'2023-02-26 13:12:53','новое начялао',3),(15,3,6,'2023-02-26 17:39:26','123',1),(16,3,55,'2023-02-26 17:40:15','Интересно',2);
 /*!40000 ALTER TABLE `error_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `user` (
   `surname` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +205,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'amir','ashizhev','123'),(2,'Жак-Ив Кусто','ffff','123'),(3,'Амир','Ашижев','1111'),(4,'Жак-Ив Кусто','Ашижев','11111');
+INSERT INTO `user` VALUES (1,'Amir','Ashizhev','1234'),(2,'Жак-Ив Кусто','Кусто','123'),(3,'Амирп','Ашижев','1111'),(4,'Жак-Ив Куст','Ашижев','11111'),(5,'Андрей','Инвокер','1234'),(6,'Иван','Петров','123'),(7,'Петр','Иванов','123'),(8,'Дмитрий','Пок','123');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -218,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-19 21:21:17
+-- Dump completed on 2023-02-26 19:27:54
